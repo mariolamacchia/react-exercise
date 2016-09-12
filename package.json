@@ -16,11 +16,16 @@
   "license": "MIT",
   "homepage": "https://github.com/alicoding/react-webpack-babel#readme",
   "dependencies": {
+    "history": "^2.0.0",
     "material-ui": "^0.15.4",
     "node-sass": "^3.9.2",
     "react": "15.3.0",
     "react-dom": "15.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.0.0",
     "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.6.0",
+    "redux-router": "^2.1.2",
     "sass-loader": "^4.0.1"
   },
   "devDependencies": {
