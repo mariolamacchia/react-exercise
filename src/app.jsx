@@ -1,8 +1,10 @@
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
 import styles from './index.scss';
+
 import React from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 
 injectTapEventPlugin();
 
@@ -18,7 +20,6 @@ export default class App extends React.Component {
           <RaisedButton label="Default" />
         </div>
       </MuiThemeProvider>
-
     )
   }
 }
