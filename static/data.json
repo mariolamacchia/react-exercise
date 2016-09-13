@@ -1,5 +1,5 @@
 {
-    "races": [
+    "breeds": [
         {
             "name": "British Shorthair",
             "subreddit": "britishshorthair"
@@ -27,14 +27,6 @@
         {
             "name": "Siberian",
             "subreddit": "SiberianCats"
-        },
-        {
-            "name": "Russian Blue",
-            "subreddit": "russianblue"
-        },
-        {
-            "name": "Ragdoll",
-            "subreddit": "ragdolls"
         }
     ]
 }
