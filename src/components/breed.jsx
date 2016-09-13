@@ -2,31 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CatsList from './cats-list';
+import FourOFour from './404';
 
 class Breed extends React.Component {
   render() {
-    const { cats } = this.props;
+    const { breed } = this.props;
     return (
       <div>
-        <h1>All categories</h1>
-        <h2>Click on your favourite cat to explore its photos</h2>
-        <CatsList cats={cats} />
+        {!breed &&
+          <FourOFour />
+        }
+        {breed &&
+          <div>
+            <h1>{breed.name}</h1>
+            <h2>Use your browser history to go back to the list</h2>
+            <CatsList cats={breed.images} />
+          </div>
+        }
       </div>
     )
   }
 }
 
 Breed.propTypes = {
-  cats: React.PropTypes.array.isRequired,
+  breed: React.PropTypes.object
 };
 
 function mapStateToProps(state) {
-  let { items: cats } = state.cats || { cats: [] };
-
-  // return an array with the first cat for each breed
-  cats = cats.map(breed => breed.images[0]);
-
-  return { cats };
+  // Find the breed written in the url
+  const breedSR = (state.router || {params: {}}).params.breed;
+  const { items: cats } = state.cats || { cats: [] };
+  let breed = cats.find(item => return item.subreddit === breedSR);
+  return { breed };
 }
 
 export default connect(mapStateToProps)(Breed);

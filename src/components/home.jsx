@@ -21,9 +21,11 @@ Home.propTypes = {
 };
 
 function mapStateToProps(state) {
-  // return an array with the first cat for each breed
   let { items: cats } = state.cats || { cats: [] };
+
+  // return an array with the first cat for each breed
   cats = cats.map(breed => breed.images[0]);
+
   return { cats };
 }
 
