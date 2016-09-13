@@ -6,20 +6,20 @@ export function cats(state = {
 }, action) {
   switch (action.type) {
     case REQUEST_CATS:
-      return Object.assign({}, {
+      return Object.assign({}, state, {
         isFetching: true
-      }, state);
+      });
     case RECEIVE_CATS:
-      return Object.assign({}, {
+      return Object.assign({}, state, {
         isFetching: false,
         items: action.cats,
         error: null
-      }, state);
+      });
     case FAIL_CATS_REQUEST:
-      return Object.assign({}, {
+      return Object.assign({}, state, {
         isFetching: false,
         error: action.error
-      }, state);
+      });
     default:
       return state;
   }

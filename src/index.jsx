@@ -17,21 +17,6 @@ import App from './components/app';
 import CatsList from './components/cats-list';
 import CatBreedsList from './components/cat-breeds-list';
 
-class Root extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <ReduxRouter>
-          <Route path="/" component={App}>
-            <IndexRoute component={CatBreedsList}></IndexRoute>
-            <Route path=":breed" component={CatsList}></Route>
-          </Route>
-        </ReduxRouter>
-      </Provider>
-    )
-  }
-}
-
 const reducer = combineReducers({
   router: routerStateReducer,
   cats
@@ -49,5 +34,20 @@ const store = compose(
 )(createStore)(reducer);
 
 store.dispatch(fetchCats());
+
+class Root extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <ReduxRouter>
+          <Route path="/" component={App}>
+            <IndexRoute component={CatBreedsList}></IndexRoute>
+            <Route path=":breed" component={CatsList}></Route>
+          </Route>
+        </ReduxRouter>
+      </Provider>
+    )
+  }
+}
 
 render(<Root/>, document.querySelector("#app"));
