@@ -19,10 +19,10 @@ function receiveCats(cats) {
 
 // FAIL_CATS_REQUEST
 export const FAIL_CATS_REQUEST = 'FAIL_CATS_REQUEST';
-function failCatsRequest(cats) {
+function failCatsRequest(error) {
   return {
     type: FAIL_CATS_REQUEST,
-    cats
+    error
   };
 }
 
@@ -32,7 +32,18 @@ export function fetchCats() {
     dispatch(requestCats());
 
     fetch('/data.json')
-      .then(response => response.json())
-      .then(json => dispatch(receiveCats(json.races)))
+      .then(
+        response => {
+          if (response.status >= 400) {
+            return Promise.reject(response.statusText);
+          } else {
+            return response.json();
+          }
+        }
+      )
+      .then(
+        json => dispatch(receiveCats(json.races)),
+        error => dispatch(failCatsRequest(error))
+      )
   }
 }
