@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { createHistory } from 'history';
 import { Route } from 'react-router';
-import { combineReducers, compose, createStore } from 'redux';
+
+import { createHistory } from 'history';
+
+import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
-import App, { Component1, Component2 } from './app.jsx';
+
+import App, { Component1, Component2 } from './app';
+import { fetchCats } from './actions';
+import { cats } from './reducers'
 
 class Root extends Component {
   render() {
@@ -26,11 +33,20 @@ class Root extends Component {
 
 const reducer = combineReducers({
   router: routerStateReducer,
+  cats
 });
+
+const loggerMiddleware = createLogger();
 
 const store = compose(
   reduxReactRouter({ createHistory }),
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
   // devTools()
 )(createStore)(reducer);
+
+store.dispatch(fetchCats());
 
 render(<Root/>, document.querySelector("#app"));

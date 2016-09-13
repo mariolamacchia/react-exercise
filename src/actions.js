@@ -13,8 +13,16 @@ export const RECEIVE_CATS = 'RECEIVE_CATS';
 function receiveCats(cats) {
   return {
     type: RECEIVE_CATS,
-    cats,
-    receivedAt: Date.now()
+    cats
+  };
+}
+
+// FAIL_CATS_REQUEST
+export const FAIL_CATS_REQUEST = 'FAIL_CATS_REQUEST';
+function failCatsRequest(cats) {
+  return {
+    type: FAIL_CATS_REQUEST,
+    cats
   };
 }
 
@@ -24,9 +32,7 @@ export function fetchCats() {
     dispatch(requestCats());
 
     fetch('/data.json')
-      .then(response => response.json)
-      .then(json =>
-        dispatch(receiveCats(json));
-      )
+      .then(response => response.json())
+      .then(json => dispatch(receiveCats(json.races)))
   }
 }
