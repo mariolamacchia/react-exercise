@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 import { createHistory } from 'history';
 
@@ -10,23 +10,24 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
 
-import App, { Component1, Component2 } from './app';
 import { fetchCats } from './actions';
 import { cats } from './reducers'
+
+import App from './components/app';
+import CatsList from './components/cats-list';
+import CatBreedsList from './components/cat-breeds-list';
 
 class Root extends Component {
   render() {
     return (
-      <div>
-        <Provider store={store}>
-          <ReduxRouter>
-            <Route path="/" component={App}>
-              <Route path="1" component={Component1}></Route>
-              <Route path="2" component={Component2}></Route>
-            </Route>
-          </ReduxRouter>
-        </Provider>
-      </div>
+      <Provider store={store}>
+        <ReduxRouter>
+          <Route path="/" component={App}>
+            <IndexRoute component={CatBreedsList}></IndexRoute>
+            <Route path=":breed" component={CatsList}></Route>
+          </Route>
+        </ReduxRouter>
+      </Provider>
     )
   }
 }
