@@ -1,20 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-class CatsList extends React.Component {
+import Cat from './cat';
+
+export default class CatsList extends React.Component {
 
   render() {
-    const { isFetching, items } = this.props;
+    const { cats } = this.props;
     return (
       <div>
-        {isFetching &&
-          <p>Loading</p>
-        }
-        {!isFetching &&
-          items.forEach(item =>
-            <img src="{item.url}" />
-          )
-        }
+        {cats.map((item, index) => <Cat cat={item} key={index} />)}
       </div>
     )
   }
@@ -23,23 +18,3 @@ class CatsList extends React.Component {
 CatsList.propTypes = {
   cats: React.PropTypes.array.isRequired
 };
-
-function mapStateToProps(state) {
-  const { cats } = state
-  const {
-    isFetching,
-    items
-  } = cats || {
-    isFetching: true,
-    items: []
-  };
-
-  console.log('FIREDD!!!!!!!!!!!!!!!!!!!!!', state, isFetching, items);
-
-  return {
-    isFetching,
-    cats: items
-  };
-}
-
-export default connect(mapStateToProps)(CatsList);

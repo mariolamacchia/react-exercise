@@ -14,8 +14,8 @@ import { fetchCats } from './actions';
 import { cats } from './reducers'
 
 import App from './components/app';
-import CatsList from './components/cats-list';
-import CatBreedsList from './components/cat-breeds-list';
+import Home from './components/home';
+import Breed from './components/breed';
 
 const reducer = combineReducers({
   router: routerStateReducer,
@@ -41,8 +41,8 @@ class Root extends Component {
       <Provider store={store}>
         <ReduxRouter>
           <Route path="/" component={App}>
-            <IndexRoute component={CatBreedsList}></IndexRoute>
-            <Route path=":breed" component={CatsList}></Route>
+            <IndexRoute component={Home}></IndexRoute>
+            <Route path=":breed" component={Breed}></Route>
           </Route>
         </ReduxRouter>
       </Provider>
