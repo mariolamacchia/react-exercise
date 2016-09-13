@@ -1,0 +1,40 @@
+{
+    "races": [
+        {
+            "name": "British Shorthair",
+            "subreddit": "britishshorthair"
+        },
+        {
+            "name": "Persian",
+            "subreddit": "persiancat"
+        },
+        {
+            "name": "Siamese",
+            "subreddit": "siamesecats"
+        },
+        {
+            "name": "Bengal",
+            "subreddit": "siamesecats"
+        },
+        {
+            "name": "Scottish Fold",
+            "subreddit": "scottishfold"
+        },
+        {
+            "name": "Maine Coon",
+            "subreddit": "mainecoon"
+        },
+        {
+            "name": "Siberian",
+            "subreddit": "SiberianCats"
+        },
+        {
+            "name": "Russian Blue",
+            "subreddit": "russianblue"
+        },
+        {
+            "name": "Ragdoll",
+            "subreddit": "ragdolls"
+        }
+    ]
+}
