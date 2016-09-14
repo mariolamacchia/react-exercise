@@ -4,9 +4,12 @@
  * Cat breed page (detail page). Extends CatPage
  */
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, dispatch } from 'react-redux';
+import { push } from 'redux-router';
 import CatPage from './cat-page';
 import FourOFour from './404';
+
+window.p = push;
 
 const subtitle = 'Use your browser history to go back to the list';
 
@@ -14,11 +17,11 @@ function mapStateToProps(state) {
   // Find the breed written in the url
   const breedSubreddit = (state.router || {params: {}}).params.breed;
   const { items: cats, isFetching } = state.cats || { cats: [], isFetching: true};
-  let breed = cats.find(item => item.subreddit === breedSubreddit);
+  const breed = cats.find(item => item.subreddit === breedSubreddit) || {};
 
   return {
-    cats: breed ? breed.cats : [],
-    title: breed ? breed.name : '',
+    cats: breed.cats,
+    title: breed.name,
     showCatIcon: true,
     subtitle,
     isFetching

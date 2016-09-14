@@ -15,48 +15,54 @@ import { Card } from 'material-ui/Card';
 
 import Cat from './cat';
 import CatIcon from './cat-icon';
+import Four0Four from './404';
 
 import styles from '../index.scss';
 
 export default class CatPage extends React.Component {
   getIcon() {
     const { cats, showCatIcon } = this.props;
-    if (showCatIcon && cats.length) {
+    if (showCatIcon && cats && cats.length) {
       return <CatIcon cat={cats[0]} />;
     }
   }
 
   render() {
     const { cats, isFetching, title, subtitle, onCatClick } = this.props;
-    return (
-      <div>
-        <AppBar className={styles.flexibleToolbar}
-          iconElementLeft={this.getIcon()}
-        />
 
-        <Card className={styles.cardContainer}>
-          <AppBar iconElementLeft={<div></div>} title={title}
-            style={{ backgroundColor: 'transparent' }}
-            titleStyle={{ color: 'black' }}
-          />
-          {!isFetching &&
-            <GridList cols={2} cellHeight={448}>
-              <Subheader>{subtitle}</Subheader>
-              {cats.map((cat, index) =>
-                <Cat cat={cat} onClick={onCatClick} key={index} />
-              )}
-            </GridList>
-          }
-        </Card>
-      </div>
-    )
+    if (!cats && !isFetching) {
+      return <Four0Four />
+    } else {
+      return (
+        <div>
+          <AppBar className={styles.flexibleToolbar}
+            iconElementLeft={this.getIcon()}
+            />
+
+          <Card className={styles.cardContainer}>
+            <AppBar iconElementLeft={<div></div>} title={title}
+              style={{ backgroundColor: 'transparent' }}
+              titleStyle={{ color: 'black' }}
+              />
+            {!isFetching &&
+              <GridList cols={2} cellHeight={448}>
+                <Subheader>{subtitle}</Subheader>
+                {cats.map((cat, index) =>
+                  <Cat cat={cat} onClick={onCatClick} key={index} />
+                )}
+              </GridList>
+            }
+          </Card>
+        </div>
+      )
+    }
   }
 }
 
 CatPage.propTypes = {
-  cats: React.PropTypes.array.isRequired,
-  title: React.PropTypes.string.isRequired,
-  subtitle: React.PropTypes.string.isRequired,
+  cats: React.PropTypes.array,
+  title: React.PropTypes.string,
+  subtitle: React.PropTypes.string,
   isFetching: React.PropTypes.bool.isRequired,
   onCatClicked: React.PropTypes.func,
   showCatIcon: React.PropTypes.bool

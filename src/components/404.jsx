@@ -6,13 +6,20 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import Cat from './cat';
+import CatImage from './cat-image';
 
 export default class FourOFour extends React.Component {
   render() {
-    const cat = { url: 'https://http.cat/404' }
+    const cat = { url: 'https://http.cat/404' };
+    const style = {
+      height: '100vh',
+      width: '100vw',
+      backgroundSize: 'contain',
+      backgroundColor: '#000000'
+    };
+
     return (
-      <Cat cat={cat} />
+      <CatImage cat={cat} style={style} />
     )
   }
 }
