@@ -20,7 +20,7 @@ export default class CatImage extends React.Component {
     }, style);
 
     return (
-      <div style={divStyle} style={divStyle} />
+      <div style={divStyle} />
     )
   }
 }

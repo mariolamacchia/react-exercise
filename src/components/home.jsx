@@ -3,7 +3,6 @@
  *
  * Home page with list of cats. Extends CatPage
  */
-import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'redux-router';
 import CatPage from './cat-page';

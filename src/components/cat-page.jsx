@@ -75,7 +75,7 @@ export default class CatPage extends React.Component {
     }
 
     return style;
-  };
+  }
 
   render() {
     const {
@@ -133,7 +133,7 @@ CatPage.propTypes = {
   subtitle: React.PropTypes.string,
   error: React.PropTypes.number,
   isFetching: React.PropTypes.bool.isRequired,
-  onCatClicked: React.PropTypes.func,
+  onCatClick: React.PropTypes.func,
   browser: React.PropTypes.object.isRequired,
   showCatIcon: React.PropTypes.bool
 };

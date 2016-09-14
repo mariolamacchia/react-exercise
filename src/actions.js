@@ -25,6 +25,34 @@ function failCatsRequest(error) {
 }
 
 
+// Parse fetch() promise
+function parseResponse(response) {
+  if (response.status >= 400) {
+    return Promise.reject(response.status);
+  } else {
+    return response.json();
+  }
+}
+
+// Extract images from subreddit json
+function getImagesFromSubreddit(subreddit) {
+  let items = subreddit.data.children
+    // Filter items with a preview
+    .filter(post => !!(
+      post.data.preview
+    ))
+    // Return the preview source
+    .map(post => {
+      // If for some reasons the preview source is missing return 404 image
+      try {
+        return post.data.preview.images[0].source
+      } catch(e) {
+        return { url: 'https://http.cat/404' };
+      }
+    });
+  return items;
+}
+
 export function fetchCats() {
   return function(dispatch) {
     dispatch(requestCats());
@@ -51,30 +79,4 @@ export function fetchCats() {
         error => dispatch(failCatsRequest(error))
       )
   }
-}
-
-function parseResponse(response) {
-  if (response.status >= 400) {
-    return Promise.reject(response.status);
-  } else {
-    return response.json();
-  }
-}
-
-function getImagesFromSubreddit(subreddit) {
-  let items = subreddit.data.children
-    // Filter items with a preview
-    .filter(post => !!(
-      post.data.preview
-    ))
-    // Return the preview source
-    .map(post => {
-      // If for some reasons the preview source is missing return 404 image
-      try {
-        return post.data.preview.images[0].source
-      } catch(e) {
-        return { url: 'https://http.cat/404' };
-      }
-    });
-  return items;
 }

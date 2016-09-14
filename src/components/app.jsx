@@ -4,7 +4,7 @@
  * Main app component
  */
 import React from 'react';
-import { connect, dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -47,6 +47,7 @@ export default class App extends React.Component {
 App.propTypes = {
   children: React.PropTypes.node,
   isFetching: React.PropTypes.bool.isRequired,
+  fetchCats: React.PropTypes.func
 };
 
 function mapStateToProps(state) {
