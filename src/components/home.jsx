@@ -8,8 +8,7 @@ import CatPage from './cat-page';
 const title = 'All categories';
 const subtitle = 'Click on your favourite cat to see all the images';
 
-function onCatClick(cat) {
-  console.log(cat);
+function onCatClick(e, cat) {
   return push({ pathname: '/' + cat.breed });
 }
 

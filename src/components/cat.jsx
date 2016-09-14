@@ -7,6 +7,11 @@ import styles from '../index.scss';
 
 export default class Cat extends React.Component {
 
+  handleClick(e, cat) {
+    e.preventDefault();
+    this.props.onClick(e, cat);
+  }
+
   render() {
     const { cat, onClick } = this.props;
 
@@ -17,7 +22,7 @@ export default class Cat extends React.Component {
     return (
       <GridTile title={cat.name}>
         { onClick &&
-          <a href="#" onClick={onClick.bind(this, cat)}>
+          <a href="#" onClick={(e) => this.handleClick(e, cat)}>
             <div style={divStyle} className={styles.cat} />
           </a>
         }
