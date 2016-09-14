@@ -41,7 +41,7 @@ export function fetchCats() {
         return Promise.all(promises).then(subreddits => {
           // Store each subreddit response into its cat breed
           subreddits.forEach((subreddit, index) => {
-            json.breeds[index].images = getImagesFromSubreddit(subreddit);
+            json.breeds[index].cats = getImagesFromSubreddit(subreddit);
           });
           return json.breeds;
         });

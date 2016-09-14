@@ -16,7 +16,7 @@ function onCatClick(cat) {
 function mapStateToProps(state) {
   const { items: breeds, isFetching } = state.cats || { breeds: [], isFetching: true};
   let cats = breeds.map(breed => Object.assign(
-    {}, breed.images[0], { breed: breed.subreddit, name: breed.name }
+    {}, breed.cats[0], { breed: breed.subreddit, name: breed.name }
   ));
   return { cats, title, subtitle, onCatClick, isFetching };
 }

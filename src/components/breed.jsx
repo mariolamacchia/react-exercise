@@ -14,7 +14,7 @@ function mapStateToProps(state) {
   let breed = cats.find(item => item.subreddit === breedSubreddit);
 
   return {
-    cats: breed ? breed.images : [],
+    cats: breed ? breed.cats : [],
     title: breed ? breed.name : '',
     showCatIcon: true,
     subtitle,
