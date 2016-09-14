@@ -4,11 +4,8 @@
  * Cat breed page (detail page). Extends CatPage
  */
 import React from 'react';
-import { connect, dispatch } from 'react-redux';
-import { push } from 'redux-router';
+import { connect } from 'react-redux';
 import CatPage from './cat-page';
-
-window.p = push;
 
 const subtitle = 'Use your browser history to go back to the list';
 

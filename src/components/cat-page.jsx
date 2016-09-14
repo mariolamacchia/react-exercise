@@ -6,7 +6,6 @@
  * I'll make a general component that will be extended
  */
 import React from 'react';
-import { connect } from 'react-redux';
 
 import AppBar from 'material-ui/AppBar';
 import { GridList } from 'material-ui/GridList';
@@ -16,7 +15,6 @@ import { Card } from 'material-ui/Card';
 import Cat from './cat';
 import CatIcon from './cat-icon';
 import ErrorPage from './error-page';
-
 import styles from '../index.scss';
 
 export default class CatPage extends React.Component {

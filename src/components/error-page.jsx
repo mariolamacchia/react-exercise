@@ -2,8 +2,6 @@
  * Error page
  */
 import React from 'react';
-import { connect } from 'react-redux'
-
 import CatImage from './cat-image';
 
 export default class ErrorPage extends React.Component {
