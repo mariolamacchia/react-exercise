@@ -1,3 +1,8 @@
+/**
+ * Cat
+ *
+ * Cat list element
+ */
 import React from 'react';
 import { GridTile } from 'material-ui/GridList';
 import CatImage from './cat-image';

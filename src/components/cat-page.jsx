@@ -1,3 +1,10 @@
+/**
+ * CatPage
+ *
+ * General cats list page.
+ * Since The only difference between Home and Breed pages is the navbar,
+ * I'll make a general component that will be extended
+ */
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -11,10 +18,6 @@ import CatIcon from './cat-icon';
 
 import styles from '../index.scss';
 
-/**
- * Since The only difference between Home and Breed pages is the navbar,
- * I'll make a general component that will be extended
- */
 export default class CatPage extends React.Component {
   getIcon() {
     const { cats, showCatIcon } = this.props;

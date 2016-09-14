@@ -1,3 +1,8 @@
+/**
+ * CatImage
+ *
+ * Cat image component: it just shows a cat.
+ */
 import React from 'react';
 
 export default class CatImage extends React.Component {

@@ -1,3 +1,8 @@
+/**
+ * CatIcon
+ *
+ * Toolbar icon with cat.
+ */
 import React from 'react';
 import CatImage from './cat-image';
 

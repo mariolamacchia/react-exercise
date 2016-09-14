@@ -1,3 +1,8 @@
+/**
+ * Four0Four
+ *
+ * 404 page
+ */
 import React from 'react';
 import { connect } from 'react-redux'
 

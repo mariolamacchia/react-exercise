@@ -1,8 +1,11 @@
+/**
+ * Home
+ *
+ * Home page with list of cats. Extends CatPage
+ */
 import React from 'react';
 import { connect, dispatch } from 'react-redux';
 import { push } from 'redux-router';
-
-// Extend CatPage
 import CatPage from './cat-page';
 
 const title = 'All categories';

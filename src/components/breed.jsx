@@ -1,7 +1,10 @@
+/**
+ * Breed
+ *
+ * Cat breed page (detail page). Extends CatPage
+ */
 import React from 'react';
 import { connect } from 'react-redux';
-
-// Extend CatPage
 import CatPage from './cat-page';
 import FourOFour from './404';
 

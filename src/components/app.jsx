@@ -1,3 +1,8 @@
+/**
+ * App
+ *
+ * Main app component
+ */
 import React from 'react';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
