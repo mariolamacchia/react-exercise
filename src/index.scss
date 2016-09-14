@@ -1,9 +1,20 @@
-.blueBg {
-	background-color: red;
-	color: white;
+.flexibleToolbar {
+	min-height: 150px;
 }
 
-.image {
-	width: 100px;
-	top: 100px;
+.cardContainer {
+	position: absolute;
+	width: 900px;
+	margin-top: -64px;
+	z-index: 2000!important;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.cat {
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }

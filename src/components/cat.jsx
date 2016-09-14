@@ -1,21 +1,30 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+
+import { GridTile } from 'material-ui/GridList';
+
+import styles from '../index.scss';
 
 export default class Cat extends React.Component {
 
   render() {
     const { cat, onClick } = this.props;
+
+    let divStyle = {
+      backgroundImage: 'url(' + cat.url + ')',
+    };
+
     return (
-      <div>
+      <GridTile title="Cat">
         { onClick &&
           <a href="#" onClick={onClick.bind(this, cat)}>
-            <img src={cat.url} />
+            <div style={divStyle} className={styles.cat} />
           </a>
         }
         { !onClick &&
-          <img src={cat.url} />
+          <div style={divStyle} className={styles.cat} />
         }
-      </div>
+      </GridTile>
     )
   }
 }
