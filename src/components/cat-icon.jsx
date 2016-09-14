@@ -1,24 +1,18 @@
 import React from 'react';
-
-import styles from '../index.scss';
+import CatImage from './cat-image';
 
 export default class CatIcon extends React.Component {
 
   render() {
     const { cat } = this.props;
-
-    let divStyle = {
-      backgroundImage: 'url(' + cat.url + ')',
+    const iconStyle = {
       width: '48px',
       height: '48px',
-      borderRadius: '48px',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
+      borderRadius: '48px'
     };
 
     return (
-      <div style={divStyle} className={styles.cat} />
+      <CatImage style={iconStyle} cat={cat} />
     )
   }
 }

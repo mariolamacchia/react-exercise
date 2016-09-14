@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
 import { GridTile } from 'material-ui/GridList';
-
-import styles from '../index.scss';
+import CatImage from './cat-image';
 
 export default class Cat extends React.Component {
 
@@ -15,20 +12,14 @@ export default class Cat extends React.Component {
   render() {
     const { cat, onClick } = this.props;
 
-    let divStyle = {
-      backgroundImage: 'url(' + cat.url + ')',
-    };
-
     return (
       <GridTile title={cat.name}>
         { onClick &&
           <a href="#" onClick={(e) => this.handleClick(e, cat)}>
-            <div style={divStyle} className={styles.cat} />
+            <CatImage cat={cat} />
           </a>
         }
-        { !onClick &&
-          <div style={divStyle} className={styles.cat} />
-        }
+        { !onClick && <CatImage cat={cat} />}
       </GridTile>
     )
   }
