@@ -1,5 +1,5 @@
 .flexibleToolbar {
-	min-height: 150px;
+	min-height: 200px;
 }
 
 .cardContainer {
@@ -9,6 +9,7 @@
 	z-index: 2000!important;
 	left: 50%;
 	transform: translateX(-50%);
+	margin-bottom: 100px;
 }
 
 .cat {
