@@ -8,8 +8,9 @@ import CatPage from './cat-page';
 const title = 'All categories';
 const subtitle = 'Click on your favourite cat to see all the images';
 
-function onCatClicked(cat) {
-  dispatch(push('/' + cat.breed));
+function onCatClick(cat) {
+  console.log(cat);
+  return push({ pathname: '/' + cat.breed });
 }
 
 function mapStateToProps(state) {
@@ -17,7 +18,7 @@ function mapStateToProps(state) {
   let cats = breeds.map(breed => Object.assign(
     {}, breed.images[0], { breed: breed.subreddit}
   ));
-  return { cats, title, subtitle, onCatClicked, isFetching };
+  return { cats, title, subtitle, onCatClick, isFetching };
 }
 
-export default connect(mapStateToProps)(CatPage);
+export default connect(mapStateToProps, { onCatClick })(CatPage);

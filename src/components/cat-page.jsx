@@ -9,14 +9,14 @@ import Cat from './cat';
  */
 export default class CatPage extends React.Component {
   render() {
-    const { cats, isFetching, title, subtitle, onCatClicked } = this.props;
+    const { cats, isFetching, title, subtitle, onCatClick } = this.props;
     return (
       <div>
         <div>
           <h1>{title}</h1>
           <h2>{subtitle}</h2>
           {!isFetching &&
-            cats.map((cat, index) => <Cat cat={cat} onClick={() => console.log('fired')} key={index} /> )
+            cats.map((cat, index) => <Cat cat={cat} onClick={onCatClick} key={index} /> )
           }
         </div>
       </div>

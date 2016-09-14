@@ -4,13 +4,23 @@ import { connect } from 'react-redux'
 export default class Cat extends React.Component {
 
   render() {
-    const { cat } = this.props;
+    const { cat, onClick } = this.props;
     return (
-      <img src={cat.url} />
+      <div>
+        { onClick &&
+          <a href="#" onClick={onClick.bind(this, cat)}>
+            <img src={cat.url} />
+          </a>
+        }
+        { !onClick &&
+          <img src={cat.url} />
+        }
+      </div>
     )
   }
 }
 
 Cat.propTypes = {
-  cat: React.PropTypes.object.isRequired
+  cat: React.PropTypes.object.isRequired,
+  onClick: React.PropTypes.func
 };
