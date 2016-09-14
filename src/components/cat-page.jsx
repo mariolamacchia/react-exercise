@@ -24,6 +24,31 @@ export default class CatPage extends React.Component {
     }
   }
 
+  getGridSettings() {
+    let settings = {};
+
+    switch (this.props.browser.mediaType) {
+      case 'infinity':
+        settings.cellHeight = 548;
+        break;
+      case 'large':
+      case 'medium':
+        settings.cellHeight = 350;
+        break;
+      case 'small':
+        settings.cellHeight = 300;
+        break;
+      case 'extraSmall':
+        settings.cellHeight = 320;
+        settings.cols = 1;
+        break;
+      default:
+        settings.cols = 2;
+    }
+
+    return settings;
+  }
+
   getCardContainerStyle() {
     if (this.props.browser.lessThan.medium) {
       return { width: '100%' };
@@ -43,6 +68,8 @@ export default class CatPage extends React.Component {
         style.width = '1100px';
         break;
       case 'large':
+        style.width = '900px';
+        break;
       case 'medium':
         style.width = '768px';
     }
@@ -83,7 +110,9 @@ export default class CatPage extends React.Component {
                 />
               }
               {!isFetching &&
-                <GridList cols={2} cellHeight={448}>
+                <GridList cols={this.getGridSettings().cols}
+                  cellHeight={this.getGridSettings().cellHeight}
+                >
                   <Subheader>{subtitle}</Subheader>
                   {cats.map((cat, index) =>
                     <Cat cat={cat} onClick={onCatClick} key={index} />
