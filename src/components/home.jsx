@@ -22,9 +22,9 @@ function mapStateToProps(state) {
     {}, breed.cats[0], { breed: breed.subreddit, name: breed.name }
   ));
   return {
-    cats, title, subtitle,
-    onCatClick, isFetching, error,
-    browser
+    cats, title,
+    subtitle, isFetching,
+    error, browser
   };
 }
 

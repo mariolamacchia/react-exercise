@@ -1,6 +1,10 @@
+import { combineReducers } from 'redux';
+import { responsiveStateReducer } from 'redux-responsive';
+import { routerStateReducer } from 'redux-router';
+
 import { REQUEST_CATS, RECEIVE_CATS, FAIL_CATS_REQUEST } from './actions';
 
-export function cats(state = {
+function cats(state = {
   isFetching: true,
   items: []
 }, action) {
@@ -24,3 +28,9 @@ export function cats(state = {
       return state;
   }
 }
+
+export default combineReducers({
+  browser: responsiveStateReducer,
+  router: routerStateReducer,
+  cats
+});
