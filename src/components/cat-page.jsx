@@ -15,7 +15,7 @@ import { Card } from 'material-ui/Card';
 
 import Cat from './cat';
 import CatIcon from './cat-icon';
-import Four0Four from './404';
+import ErrorPage from './error-page';
 
 import styles from '../index.scss';
 
@@ -28,10 +28,10 @@ export default class CatPage extends React.Component {
   }
 
   render() {
-    const { cats, isFetching, title, subtitle, onCatClick } = this.props;
+    const { cats, isFetching, title, subtitle, onCatClick, error } = this.props;
 
     if (!cats && !isFetching) {
-      return <Four0Four />
+      return <ErrorPage errorCode="404" />
     } else {
       return (
         <div>

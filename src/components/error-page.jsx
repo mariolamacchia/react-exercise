@@ -1,16 +1,15 @@
 /**
- * Four0Four
- *
- * 404 page
+ * Error page
  */
 import React from 'react';
 import { connect } from 'react-redux'
 
 import CatImage from './cat-image';
 
-export default class FourOFour extends React.Component {
+export default class ErrorPage extends React.Component {
   render() {
-    const cat = { url: 'https://http.cat/404' };
+    const { errorCode } = this.props;
+    const cat = { url: 'https://http.cat/' + errorCode };
     const style = {
       height: '100vh',
       width: '100vw',
@@ -23,3 +22,7 @@ export default class FourOFour extends React.Component {
     )
   }
 }
+
+ErrorPage.propTypes = {
+  errorCode: React.PropTypes.string.isRequired
+};

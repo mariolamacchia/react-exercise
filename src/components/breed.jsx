@@ -7,7 +7,6 @@ import React from 'react';
 import { connect, dispatch } from 'react-redux';
 import { push } from 'redux-router';
 import CatPage from './cat-page';
-import FourOFour from './404';
 
 window.p = push;
 
