@@ -55,7 +55,7 @@ export function fetchCats() {
 
 function parseResponse(response) {
   if (response.status >= 400) {
-    return Promise.reject(response.statusText);
+    return Promise.reject(response.status);
   } else {
     return response.json();
   }
@@ -69,7 +69,7 @@ function getImagesFromSubreddit(subreddit) {
     ))
     // Return the preview source
     .map(post => {
-      // If for some reason the preview source is missing return 404 image
+      // If for some reasons the preview source is missing return 404 image
       try {
         return post.data.preview.images[0].source
       } catch(e) {

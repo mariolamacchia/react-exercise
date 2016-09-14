@@ -30,8 +30,10 @@ export default class CatPage extends React.Component {
   render() {
     const { cats, isFetching, title, subtitle, onCatClick, error } = this.props;
 
-    if (!cats && !isFetching) {
-      return <ErrorPage errorCode="404" />
+    if (error) {
+      return <ErrorPage errorCode={error} />
+    } else if (!cats && !isFetching) {
+      return <ErrorPage errorCode={404} />
     } else {
       return (
         <div>
@@ -63,6 +65,7 @@ CatPage.propTypes = {
   cats: React.PropTypes.array,
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
+  error: React.PropTypes.number,
   isFetching: React.PropTypes.bool.isRequired,
   onCatClicked: React.PropTypes.func,
   showCatIcon: React.PropTypes.bool

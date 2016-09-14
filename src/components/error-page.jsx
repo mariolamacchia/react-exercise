@@ -24,5 +24,5 @@ export default class ErrorPage extends React.Component {
 }
 
 ErrorPage.propTypes = {
-  errorCode: React.PropTypes.string.isRequired
+  errorCode: React.PropTypes.number.isRequired
 };
