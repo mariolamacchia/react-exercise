@@ -1,0 +1,32 @@
+{
+    "breeds": [
+        {
+            "name": "British Shorthair",
+            "subreddit": "britishshorthair"
+        },
+        {
+            "name": "Persian",
+            "subreddit": "persiancat"
+        },
+        {
+            "name": "Siamese",
+            "subreddit": "siamesecats"
+        },
+        {
+            "name": "Bengal",
+            "subreddit": "bengalcats"
+        },
+        {
+            "name": "Scottish Fold",
+            "subreddit": "scottishfold"
+        },
+        {
+            "name": "Maine Coon",
+            "subreddit": "mainecoon"
+        },
+        {
+            "name": "Siberian",
+            "subreddit": "SiberianCats"
+        }
+    ]
+}
