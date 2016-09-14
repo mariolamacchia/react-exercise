@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 injectTapEventPlugin();
 
-export default class CatsList extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     children: React.PropTypes.node
   };

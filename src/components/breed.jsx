@@ -1,39 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CatsList from './cats-list';
+// Extend CatPage
+import CatPage from './cat-page';
 import FourOFour from './404';
 
-class Breed extends React.Component {
-  render() {
-    const { breed } = this.props;
-    return (
-      <div>
-        {!breed &&
-          <FourOFour />
-        }
-        {breed &&
-          <div>
-            <h1>{breed.name}</h1>
-            <h2>Use your browser history to go back to the list</h2>
-            <CatsList cats={breed.images} />
-          </div>
-        }
-      </div>
-    )
-  }
-}
-
-Breed.propTypes = {
-  breed: React.PropTypes.object
-};
+const subtitle = 'Use your browser history to go back to the list';
 
 function mapStateToProps(state) {
   // Find the breed written in the url
-  const breedSR = (state.router || {params: {}}).params.breed;
-  const { items: cats } = state.cats || { cats: [] };
-  let breed = cats.find(item => return item.subreddit === breedSR);
-  return { breed };
+  const breedSubreddit = (state.router || {params: {}}).params.breed;
+  console.log(breedSubreddit);
+  const { items: cats, isFetching } = state.cats || { cats: [], isFetching: true};
+  let breed = cats.find(item => item.subreddit === breedSubreddit);
+  console.log(breed, cats);
+
+  return {
+    cats: breed ? breed.images : [],
+    title: breed ? breed.name : '',
+    subtitle,
+    isFetching
+  };
 }
 
-export default connect(mapStateToProps)(Breed);
+export default connect(mapStateToProps)(CatPage);

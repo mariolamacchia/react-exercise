@@ -1,32 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, dispatch } from 'react-redux';
+import { push } from 'redux-router';
 
-import CatsList from './cats-list';
+// Extend CatPage
+import CatPage from './cat-page';
 
-class Home extends React.Component {
-  render() {
-    const { cats } = this.props;
-    return (
-      <div>
-        <h1>All categories</h1>
-        <h2>Click on your favourite cat to explore its photos</h2>
-        <CatsList cats={cats} />
-      </div>
-    )
-  }
+const title = 'All categories';
+const subtitle = 'Click on your favourite cat to see all the images';
+
+function onCatClicked(cat) {
+  dispatch(push('/' + cat.breed));
 }
-
-Home.propTypes = {
-  cats: React.PropTypes.array.isRequired,
-};
 
 function mapStateToProps(state) {
-  let { items: cats } = state.cats || { cats: [] };
-
-  // return an array with the first cat for each breed
-  cats = cats.map(breed => breed.images[0]);
-
-  return { cats };
+  const { items: breeds, isFetching } = state.cats || { breeds: [], isFetching: true};
+  let cats = breeds.map(breed => Object.assign(
+    {}, breed.images[0], { breed: breed.subreddit}
+  ));
+  return { cats, title, subtitle, onCatClicked, isFetching };
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(CatPage);
