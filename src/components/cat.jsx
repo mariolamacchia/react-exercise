@@ -15,7 +15,7 @@ export default class Cat extends React.Component {
     };
 
     return (
-      <GridTile title="Cat">
+      <GridTile title={cat.name}>
         { onClick &&
           <a href="#" onClick={onClick.bind(this, cat)}>
             <div style={divStyle} className={styles.cat} />
