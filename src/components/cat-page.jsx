@@ -15,7 +15,6 @@ import { Card } from 'material-ui/Card';
 import Cat from './cat';
 import CatIcon from './cat-icon';
 import ErrorPage from './error-page';
-import styles from '../index.scss';
 
 export default class CatPage extends React.Component {
   getIcon() {
@@ -28,6 +27,19 @@ export default class CatPage extends React.Component {
   render() {
     const { cats, isFetching, title, subtitle, onCatClick, error } = this.props;
 
+    const flexibleToolbarStyle = {
+      minHeight: '200px'
+    };
+    const cardContainerStyle = {
+    	position: 'absolute',
+    	width: '900px',
+    	marginTop: '-64px',
+    	zIndex: '2000!important',
+    	left: '50%',
+    	transform: 'translateX(-50%)',
+    	margin-bottom: '100px'
+    };
+
     if (error) {
       return <ErrorPage errorCode={error} />
     } else if (!cats && !isFetching) {
@@ -35,11 +47,11 @@ export default class CatPage extends React.Component {
     } else {
       return (
         <div>
-          <AppBar className={styles.flexibleToolbar}
+          <AppBar style={flexibleToolbarStyle}
             iconElementLeft={this.getIcon()}
             />
 
-          <Card className={styles.cardContainer}>
+          <Card className={cardContainerStyle}>
             <AppBar iconElementLeft={<div></div>} title={title}
               style={{ backgroundColor: 'transparent' }}
               titleStyle={{ color: 'black' }}
