@@ -7,6 +7,7 @@ import Subheader from 'material-ui/Subheader';
 import { Card } from 'material-ui/Card';
 
 import Cat from './cat';
+import CatIcon from './cat-icon';
 
 import styles from '../index.scss';
 
@@ -18,7 +19,7 @@ export default class CatPage extends React.Component {
   getIcon() {
     const { cats, showCatIcon } = this.props;
     if (showCatIcon && cats.length) {
-      return <img src={cats[0].url} />;
+      return <CatIcon cat={cats[0]} />;
     }
   }
 

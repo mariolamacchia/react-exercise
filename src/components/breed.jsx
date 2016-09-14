@@ -18,6 +18,7 @@ function mapStateToProps(state) {
   return {
     cats: breed ? breed.images : [],
     title: breed ? breed.name : '',
+    showCatIcon: true,
     subtitle,
     isFetching
   };
