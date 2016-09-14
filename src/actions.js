@@ -58,7 +58,7 @@ export function fetchCats() {
     dispatch(requestCats());
 
     // Get data.json
-    fetch('/data.json')
+    fetch('./data.json')
       .then(parseResponse)
       // For each breed of cats, take a list from the subreddit
       .then(json => {
