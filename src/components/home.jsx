@@ -17,10 +17,15 @@ function onCatClick(e, cat) {
 
 function mapStateToProps(state) {
   const { items: breeds, isFetching, error } = state.cats || { breeds: [], isFetching: true};
+  const { browser } = state;
   let cats = breeds.map(breed => Object.assign(
     {}, breed.cats[0], { breed: breed.subreddit, name: breed.name }
   ));
-  return { cats, title, subtitle, onCatClick, isFetching, error };
+  return {
+    cats, title, subtitle,
+    onCatClick, isFetching, error,
+    browser
+  };
 }
 
 export default connect(mapStateToProps, { onCatClick })(CatPage);

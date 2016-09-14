@@ -24,21 +24,43 @@ export default class CatPage extends React.Component {
     }
   }
 
-  render() {
-    const { cats, isFetching, title, subtitle, onCatClick, error } = this.props;
+  getCardContainerStyle() {
+    if (this.props.browser.lessThan.medium) {
+      return { width: '100%' };
+    }
 
-    const flexibleToolbarStyle = {
+    let style = {
+      position: 'absolute',
+      marginTop: '-64px',
+      zIndex: '2000',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      marginBottom: '100px'
+    }
+
+    switch (this.props.browser.mediaType) {
+      case 'infinity':
+        style.width = '1100px';
+        break;
+      case 'large':
+      case 'medium':
+        style.width = '768px';
+    }
+
+    return style;
+  };
+
+  render() {
+    const {
+      cats, isFetching,
+      title, subtitle,
+      onCatClick, error,
+      browser
+    } = this.props;
+
+    const flexibleToolbarStyle = browser.greaterThan.small ? {
       minHeight: '200px'
-    };
-    const cardContainerStyle = {
-    	position: 'absolute',
-    	width: '900px',
-    	marginTop: '-64px',
-    	zIndex: '2000!important',
-    	left: '50%',
-    	transform: 'translateX(-50%)',
-    	margin-bottom: '100px'
-    };
+    } : {};
 
     if (error) {
       return <ErrorPage errorCode={error} />
@@ -49,21 +71,26 @@ export default class CatPage extends React.Component {
         <div>
           <AppBar style={flexibleToolbarStyle}
             iconElementLeft={this.getIcon()}
-            />
+            title={browser.lessThan.medium && title}
+          />
 
-          <Card className={cardContainerStyle}>
-            <AppBar iconElementLeft={<div></div>} title={title}
-              style={{ backgroundColor: 'transparent' }}
-              titleStyle={{ color: 'black' }}
-              />
-            {!isFetching &&
-              <GridList cols={2} cellHeight={448}>
-                <Subheader>{subtitle}</Subheader>
-                {cats.map((cat, index) =>
-                  <Cat cat={cat} onClick={onCatClick} key={index} />
-                )}
-              </GridList>
-            }
+        <Card style={this.getCardContainerStyle()}>
+            <div>
+              {browser.greaterThan.small &&
+                <AppBar iconElementLeft={<div></div>} title={title}
+                  style={{ backgroundColor: 'transparent' }}
+                  titleStyle={{ color: 'black' }}
+                />
+              }
+              {!isFetching &&
+                <GridList cols={2} cellHeight={448}>
+                  <Subheader>{subtitle}</Subheader>
+                  {cats.map((cat, index) =>
+                    <Cat cat={cat} onClick={onCatClick} key={index} />
+                  )}
+                </GridList>
+              }
+            </div>
           </Card>
         </div>
       )
@@ -78,5 +105,6 @@ CatPage.propTypes = {
   error: React.PropTypes.number,
   isFetching: React.PropTypes.bool.isRequired,
   onCatClicked: React.PropTypes.func,
+  browser: React.PropTypes.object.isRequired,
   showCatIcon: React.PropTypes.bool
 };
