@@ -11,7 +11,7 @@ const title = 'All categories';
 const subtitle = 'Click on your favourite cat to see all the images';
 
 function onCatClick(e, cat) {
-  return push({ pathname: '/' + cat.breed });
+  return push({ pathname: cat.breed });
 }
 
 function mapStateToProps(state) {
