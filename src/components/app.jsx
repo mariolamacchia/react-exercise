@@ -13,7 +13,7 @@ import { fetchCats } from '../actions';
 
 injectTapEventPlugin();
 
-export default class App extends React.Component {
+class App extends React.Component {
   componentDidMount() {
     this.props.fetchCats();
   }
